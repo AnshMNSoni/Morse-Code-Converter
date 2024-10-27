@@ -48,7 +48,7 @@ class Morse_GUI:
     def __init__(self):
         self.window = Tk()
         self.window.title('Morse Converter')
-        self.window.config(bg='white', highlightthickness=0)
+        self.window.config(bg='white', highlightthickness=0, padx=40, pady=40)
         
         
         # Morse Logo:
@@ -109,7 +109,7 @@ class Morse_GUI:
             self.encode_string =  ' '.join(morse_code_dict[char] for char in self.message.upper())
             
         except KeyError:
-            messagebox.showwarning(message='Enter Valid Input!')
+            messagebox.showwarning(message='Already Encoded!')
             self.text_input.delete(0, END)
         
         else:
@@ -124,7 +124,7 @@ class Morse_GUI:
             self.decode_string = ''.join(self.inverse_morse_code_dict[char] for char in self.message.split()).capitalize()
             
         except KeyError:
-            messagebox.showwarning(message='Enter Valid Input!')
+            messagebox.showwarning(message='Already Decoded!')
             self.text_input.delete(0, END)
         
         else:
@@ -137,7 +137,7 @@ class Morse_GUI:
             pyperclip.copy(self.encode_string)
         
         except AttributeError:
-            messagebox.showinfo(title='Info', message='Sorry, Nothing to Copy')
+            messagebox.showinfo(title='Info', message='Sorry! Nothing to Copy')
             
     
     def try_me(self):
